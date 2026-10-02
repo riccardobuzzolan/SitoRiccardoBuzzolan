@@ -1,4 +1,9 @@
-# Repository storico
+# Ripetizioni | Riccardo Buzzolan
 
-Questo sito reindirizza al portfolio aggiornato:
+Landing page dedicata alle ripetizioni a Schio, Vicenza e online.
+
+Pagina pubblica:
+https://riccardobuzzolan.github.io/SitoRiccardoBuzzolan/
+
+Il portfolio generale resta separato:
 https://riccardobuzzolan.github.io/
