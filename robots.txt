@@ -1,2 +1,4 @@
 User-agent: *
-Disallow: /
+Allow: /
+
+Sitemap: https://riccardobuzzolan.github.io/SitoRiccardoBuzzolan/sitemap.xml
