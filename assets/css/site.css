@@ -1073,7 +1073,7 @@
   .atlas-embed-frame iframe { height: 72svh; min-height: 470px; }
 }
 
-/* Locally rendered editorial, Figma and Notion previews: no blocked third-party frames. */
+/* Local Substack summaries and real Figma screenshot; Notion remains a live embed. */
 .local-reader { min-height: 485px; background: #fff; }
 .local-article { min-height: 485px; padding: clamp(24px,4vw,48px); display: flex; flex-direction: column; }
 .local-article[hidden] { display: none !important; }
@@ -1084,7 +1084,7 @@
 .local-article-copy p { font-size: .95rem; color: #353535; line-height: 1.8; margin: 0 0 16px; }
 .local-article-note { margin: auto 0 0; padding-top: 15px; font-size: .74rem; line-height: 1.5; color: #79716e; }
 .figma-preview-info { padding: 26px 30px; background: #f8f8f6; border-bottom: 1px solid #e3e6e1; }
-.figma-preview-info span,.notion-local-header>span,.figma-community-link small { font-size: .7rem; font-weight: 850; letter-spacing: .11em; color: #78685e; }
+.figma-preview-info span,.figma-community-link small { font-size: .7rem; font-weight: 850; letter-spacing: .11em; color: #78685e; }
 .figma-preview-info h3 { margin: 9px 0; font-size: clamp(1.5rem,2.5vw,2.5rem); letter-spacing: -.045em; }
 .figma-preview-info p { margin: 0; font-size: .82rem; line-height: 1.6; max-width: 68ch; color: #6a6967; }
 .figma-image-viewport { height: min(630px,76svh); overflow-y: auto; overscroll-behavior: contain; background: #f5f4f1; text-align: center; }
@@ -1093,33 +1093,10 @@
 .figma-community-link { min-height: 205px; padding: 22px; display: flex; flex-direction: column; gap: 14px; background: #f9f9f8; }
 .figma-community-link p { margin: 0; max-width: 54ch; font-size: .84rem; line-height: 1.6; color: #5a5c59; }
 .figma-community-link a { margin-top: auto; display: inline-flex; font-size: .81rem; font-weight: 780; text-underline-offset: 3px; }
-.notion-local { padding: clamp(24px,4vw,48px); background: #fff; }
-.notion-local-header { max-width: 800px; }
-.notion-local-header h3 { margin: 18px 0; font-size: clamp(2rem,4.8vw,4.2rem); line-height: 1.08; font-weight: 560; letter-spacing: -.055em; }
-.notion-local-header p { font-size: .91rem; line-height: 1.7; color: #626462; max-width: 68ch; }
-.notion-local-topics { display: flex; flex-wrap: wrap; gap: 8px; margin: 26px 0 28px; }
-.notion-local-topics span { padding: 8px 12px; border: 1px solid #d9ddda; border-radius: 20px; font-size: .69rem; font-weight: 760; color: #4b5c54; }
-.notion-local-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
-.notion-local-grid article { padding: 26px; background: #f8f9f7; border: 1px solid #e7ebe7; min-height: 204px; }
-.notion-local-grid article small { color: #5c7c6c; font-size: .66rem; font-weight: 850; letter-spacing: .08em; }
-.notion-local-grid article h4 { font-size: clamp(1.05rem,2vw,1.55rem); margin: 13px 0 9px; line-height: 1.2; }
-.notion-local-grid article p { font-size: .8rem; line-height: 1.65; color: #606b65; margin: 0 0 12px; }
-.notion-local-grid article a { text-underline-offset: 3px; font-size: .74rem; font-weight: 780; }
-.notion-local-details { margin-top: 26px; border-top: 1px solid #e8eae8; }
-.notion-local-details details { border-bottom: 1px solid #e8eae8; }
-.notion-local-details summary { list-style: none; display: flex; align-items: center; justify-content: space-between; cursor: pointer; padding: 20px 0; font-weight: 780; font-size: .91rem; gap: 20px; }
-.notion-local-details summary::-webkit-details-marker { display: none; }
-.notion-local-details summary span { font-size: .7rem; font-weight: 540; color: #777; }
-.notion-local-details details p { margin: 0; padding: 0 0 22px; max-width: 75ch; font-size: .82rem; line-height: 1.7; color: #566159; }
-.notion-local-details summary:focus-visible { outline: 3px solid #079dc0; outline-offset: 3px; }
 @media(max-width:700px) {
   .local-reader,.local-article { min-height: 420px; }
   .local-article { padding: 22px; }
   .local-article h3 { margin-top: 18px; }
   .figma-preview-info { padding: 20px; }
   .figma-image-viewport { height: min(520px,60svh); }
-  .notion-local { padding: 20px; }
-  .notion-local-grid { grid-template-columns: 1fr; }
-  .notion-local-grid article { min-height: 0; }
-  .notion-local-details summary { align-items: flex-start; flex-direction: column; gap: 4px; }
 }
