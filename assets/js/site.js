@@ -223,6 +223,7 @@
     frame.src = frame.dataset.src;
     frame.hidden = false;
     button.hidden = true;
+    button.parentElement?.querySelector('.embed-poster')?.setAttribute('hidden', '');
     button.previousElementSibling?.setAttribute('hidden', '');
   }));
 
@@ -237,6 +238,9 @@
     }
     if(substackOpen)substackOpen.href=url;
     if(substackLabel)substackLabel.textContent=url.replace(/^https?:\/\//,'').replace(/\/$/,'');
+    const posterTitle=$('#substackPosterTitle'), posterSummary=$('#substackPosterSummary');
+    if(posterTitle)posterTitle.textContent=button.querySelector('b')?.textContent || 'Articoli';
+    if(posterSummary)posterSummary.textContent=button.querySelector('span')?.textContent || '';
   }));
 
   // Projects/research carousel.
