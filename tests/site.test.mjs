@@ -100,7 +100,7 @@ test('unsupported external frames are replaced with local, readable previews', (
   assert.match(frames[0], /src="https:\/\/usa-memory-atlas\.vercel\.app\/"/);
   assert.equal([...html.matchAll(/data-local-article="\d"/g)].length, 6);
   assert.equal([...html.matchAll(/class="article-select(?: active)?"/g)].length, 6);
-  assert.match(html, /data-local-article="1"(?=>)/);
+  assert.match(html, /data-local-article="1"\s*>/);
   assert.match(html, /assets\/images\/figma-home-light\.png/);
   assert.match(html, /class="notion-local-grid"/);
   assert.match(html, /class="notion-local-details"/);
