@@ -25,5 +25,7 @@ jobs:
         uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444
         with:
           node-version: 22
+      - name: Regressions for drawer, image failure and static checks
+        run: node --test tests/*.test.mjs
       - name: Validate static site
         run: node scripts/check-site.mjs
