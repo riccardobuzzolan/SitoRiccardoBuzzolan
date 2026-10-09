@@ -83,6 +83,7 @@
   // Clickable desktop archive.
   const folders = {
     projects:{title:'Progetti',description:'Progetti e portfolio disponibili online.',files:[
+      ['Memory Atlas · nuova versione','Web app · mappa e ripasso','https://usa-memory-atlas.vercel.app/'],
       ['Impara capitali e stati','Web app · didattica','https://riccardobuzzolan.github.io/imparacapitalistati/'],
       ['Portfolio Notion','Portfolio completo','https://riccardobuzzolan.notion.site/Riccardo-Buzzolan-368f6793082c8139bd90dc2d61e1a6af?pvs=74'],
       ['Prototipo Figma','Interfaccia e flussi','https://www.figma.com/design/JOqpajXGkd1mJUCCdxGuob/RIccardo-Bz?node-id=194-308'],
@@ -231,6 +232,7 @@
 
   // Archive data grid with real links.
   const gridRows=[
+    {name:'Memory Atlas — nuova versione',area:'Web app',status:'Online',url:'https://usa-memory-atlas.vercel.app/'},
     {name:'Impara capitali e stati',area:'Web app',status:'Online',url:'https://riccardobuzzolan.github.io/imparacapitalistati/'},
     {name:'Portfolio Notion',area:'Portfolio',status:'Notion',url:'https://riccardobuzzolan.notion.site/Riccardo-Buzzolan-368f6793082c8139bd90dc2d61e1a6af?pvs=74'},
     {name:'Prototipo Figma',area:'Prototipo',status:'Figma',url:'https://www.figma.com/design/JOqpajXGkd1mJUCCdxGuob/RIccardo-Bz?node-id=194-308'},
