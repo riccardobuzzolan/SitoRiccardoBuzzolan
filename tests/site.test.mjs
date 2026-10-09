@@ -93,17 +93,19 @@ test('source security reports the category and file without exposing a matched t
   assert.ok(errors.every(error => !error.includes(token)));
 });
 
-test('portfolio renders six external embeds without a manual activation gate', () => {
+test('unsupported external frames are replaced with local, readable previews', () => {
   const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
   const frames = [...html.matchAll(/<iframe\b[^>]*><\/iframe>/g)].map(match => match[0]);
-  assert.equal(frames.length, 6);
-  for (const frame of frames) {
-    assert.match(frame, /\bsrc="https:\/\//);
-    assert.doesNotMatch(frame, /\bdata-src=|\shidden(?:\s|>)/);
-    assert.match(frame, /\bloading="lazy"/);
-  }
-  assert.doesNotMatch(html, /data-embed-activate|embed-consent-trigger/);
-  assert.match(html, /class="article-select active" data-substack-url="https:\/\/riccardobuzzolan\.substack\.com\/p\/gamificationfinanza"/);
-  assert.match(html, /id="substackFrame"[^>]*src="https:\/\/riccardobuzzolan\.substack\.com\/p\/gamificationfinanza"/);
-  assert.match(source, /substackFrame\.src=url/);
+  assert.equal(frames.length, 1);
+  assert.match(frames[0], /src="https:\/\/usa-memory-atlas\.vercel\.app\/"/);
+  assert.equal([...html.matchAll(/data-local-article="\d"/g)].length, 6);
+  assert.equal([...html.matchAll(/class="article-select(?: active)?"/g)].length, 6);
+  assert.match(html, /data-local-article="1"(?=>)/);
+  assert.match(html, /assets\/images\/figma-home-light\.png/);
+  assert.match(html, /class="notion-local-grid"/);
+  assert.match(html, /class="notion-local-details"/);
+  assert.doesNotMatch(html, /<iframe[^>]*(?:substack\.com|figma\.com|notion\.site)/);
+  assert.doesNotMatch(html, /id="(?:substackFrame|externalPreview[2345])"/);
+  assert.match(source, /articlePreviews\.forEach/);
+  assert.match(source, /panel\.hidden=i!==index/);
 });
