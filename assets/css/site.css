@@ -1059,3 +1059,16 @@
     @media(max-width:1180px) and (min-width:1021px){.topbar{left:28px!important}.topbar .navlinks a{padding:8px 9px!important;font-size:.64rem!important}.topbar{grid-template-columns:minmax(110px,1fr) auto minmax(110px,1fr)!important}}
     @media(max-width:1020px){.topbar{transform:none!important;left:18px!important;right:12px!important}}
     @media(max-width:680px){.topbar{left:14px!important;right:8px!important}.compact-education .report-body{padding:22px 18px!important}}
+
+/* Embedded Memory Atlas — standalone layout, no additional dependencies. */
+.atlas-embed-section { padding: clamp(56px, 7vw, 100px) 0; border-top: 1px solid var(--line-soft); background: #fff; }
+.atlas-embed-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 28px; margin-bottom: 22px; }
+.atlas-embed-head h2 { font-size: clamp(32px, 5vw, 58px); font-weight: 550; letter-spacing: -.045em; margin: 12px 0; }
+.atlas-embed-head p { max-width: 580px; line-height: 1.65; font-size: 14px; color: #667378; }
+.atlas-embed-head > a { font-size: 13px; font-weight: 600; color: #10171c; text-decoration: underline; text-underline-offset: 5px; flex-shrink: 0; }
+.atlas-embed-frame { border: 1px solid #dfe5e2; background: #f6f8f7; }
+.atlas-embed-frame iframe { display: block; width: 100%; border: 0; height: min(720px, 76svh); min-height: 440px; }
+@media (max-width: 700px) {
+  .atlas-embed-head { align-items: flex-start; flex-direction: column; }
+  .atlas-embed-frame iframe { height: 72svh; min-height: 470px; }
+}
