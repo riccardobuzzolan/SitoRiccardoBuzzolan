@@ -1072,3 +1072,9 @@
   .atlas-embed-head { align-items: flex-start; flex-direction: column; }
   .atlas-embed-frame iframe { height: 72svh; min-height: 470px; }
 }
+
+/* External content previews only load after explicit visitor activation. */
+.embed-disclosure { margin: 1rem; font-size: .9rem; line-height: 1.5; }
+.embed-consent-trigger { display: block; margin: 1rem; padding: .85rem 1.15rem; background: #fff; color: #171717; border: 1px solid currentColor; border-radius: 0; font: inherit; cursor: pointer; }
+.embed-consent-trigger:focus-visible { outline: 3px solid #079dc0; outline-offset: 3px; }
+iframe[hidden], .embed-consent-trigger[hidden], .embed-disclosure[hidden] { display: none !important; }
