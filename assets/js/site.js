@@ -216,12 +216,27 @@
     location.href=`mailto:riccardobuzzolan96@gmail.com?subject=${encodeURIComponent('Richiesta ripetizioni · '+subject)}&body=${encodeURIComponent(body)}`;
   });
 
+  // External iframes remain unloaded until a visitor explicitly requests a preview.
+  document.querySelectorAll('[data-embed-activate]')?.forEach(button => button.addEventListener('click', () => {
+    const frame = document.getElementById(button.dataset.embedActivate);
+    if (!frame?.dataset.src) return;
+    frame.src = frame.dataset.src;
+    frame.hidden = false;
+    button.hidden = true;
+    button.previousElementSibling?.setAttribute('hidden', '');
+  }));
+
   // Substack embedded browser.
   const substackFrame=$('#substackFrame'), substackOpen=$('#substackOpen'), substackLabel=$('#substackFrameLabel');
   $$('.article-select').forEach(button=>button.addEventListener('click',()=>{
     const url=button.dataset.substackUrl; if(!url)return;
     $$('.article-select').forEach(item=>item.classList.toggle('active',item===button));
-    if(substackFrame)substackFrame.src=url; if(substackOpen)substackOpen.href=url; if(substackLabel)substackLabel.textContent=url.replace(/^https?:\/\//,'').replace(/\/$/,'');
+    if(substackFrame) {
+      substackFrame.dataset.src=url;
+      if(substackFrame.hasAttribute('src')) substackFrame.src=url;
+    }
+    if(substackOpen)substackOpen.href=url;
+    if(substackLabel)substackLabel.textContent=url.replace(/^https?:\/\//,'').replace(/\/$/,'');
   }));
 
   // Projects/research carousel.
