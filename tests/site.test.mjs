@@ -92,3 +92,18 @@ test('source security reports the category and file without exposing a matched t
   assert.ok(errors.some(error => error.includes('GitHub token')));
   assert.ok(errors.every(error => !error.includes(token)));
 });
+
+test('portfolio renders six external embeds without a manual activation gate', () => {
+  const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+  const frames = [...html.matchAll(/<iframe\\b[^>]*><\\/iframe>/g)].map(match => match[0]);
+  assert.equal(frames.length, 6);
+  for (const frame of frames) {
+    assert.match(frame, /\\bsrc="https:\\/\\//);
+    assert.doesNotMatch(frame, /\\bdata-src=|\\shidden(?:\\s|>)/);
+    assert.match(frame, /\\bloading="lazy"/);
+  }
+  assert.doesNotMatch(html, /data-embed-activate|embed-consent-trigger/);
+  assert.match(html, /class="article-select active" data-substack-url="https:\\/\\/riccardobuzzolan\\.substack\\.com\\/p\\/gamificationfinanza"/);
+  assert.match(html, /id="substackFrame"[^>]*src="https:\\/\\/riccardobuzzolan\\.substack\\.com\\/p\\/gamificationfinanza"/);
+  assert.match(source, /substackFrame\\.src=url/);
+});
