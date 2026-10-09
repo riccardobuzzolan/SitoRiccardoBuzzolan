@@ -93,19 +93,20 @@ test('source security reports the category and file without exposing a matched t
   assert.ok(errors.every(error => !error.includes(token)));
 });
 
-test('unsupported external frames are replaced with local, readable previews', () => {
+test('Notion uses its genuine iframe embed and the other previews keep working', () => {
   const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
   const frames = [...html.matchAll(/<iframe\b[^>]*><\/iframe>/g)].map(match => match[0]);
-  assert.equal(frames.length, 1);
+  assert.equal(frames.length, 2);
   assert.match(frames[0], /src="https:\/\/usa-memory-atlas\.vercel\.app\/"/);
   assert.equal([...html.matchAll(/data-local-article="\d"/g)].length, 6);
   assert.equal([...html.matchAll(/class="article-select(?: active)?"/g)].length, 6);
   assert.match(html, /data-local-article="1"\s*>/);
   assert.match(html, /assets\/images\/figma-home-light\.png/);
-  assert.match(html, /class="notion-local-grid"/);
-  assert.match(html, /class="notion-local-details"/);
-  assert.doesNotMatch(html, /<iframe[^>]*(?:substack\.com|figma\.com|notion\.site)/);
-  assert.doesNotMatch(html, /id="(?:substackFrame|externalPreview[2345])"/);
+  assert.match(frames[1], /src="https:\/\/riccardobuzzolan\.notion\.site\/ebd\/368f6793082c8139bd90dc2d61e1a6af"/);
+  assert.match(frames[1], /id="externalPreview5"/);
+  assert.doesNotMatch(html, /class="notion-local(?:-grid|-details)?"/);
+  assert.doesNotMatch(html, /<iframe[^>]*(?:substack\.com|figma\.com)/);
+  assert.doesNotMatch(html, /id="(?:substackFrame|externalPreview[234])"/);
   assert.match(source, /articlePreviews\.forEach/);
   assert.match(source, /panel\.hidden=i!==index/);
 });
