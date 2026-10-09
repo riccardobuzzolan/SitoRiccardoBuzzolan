@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-label="Portfolio Riccardo Buzzolan">
+  <style>
+    @keyframes grid-shift{0%,81%,100%{transform:translateY(0)}89%{transform:translateY(2px)}}
+    @keyframes accent{0%,75%,100%{transform:scale(1);opacity:1}86%{transform:scale(.73);opacity:.75}93%{transform:scale(1.12);opacity:1}}
+    .grid{animation:grid-shift 5.2s ease-in-out infinite}
+    .accent{animation:accent 5.2s ease-in-out infinite;transform-origin:37px 33px}
+    @media (prefers-reduced-motion:reduce){.grid,.accent{animation:none}}
+  </style>
+  <rect x="2" y="2" width="60" height="60" rx="13" fill="#f9f8f5"/>
+  <rect x="9" y="9" width="15" height="46" rx="4" fill="#202428"/>
+  <rect x="29" y="9" width="26" height="11" rx="3" fill="#202428"/>
+  <rect x="44" y="26" width="11" height="13" rx="3" fill="#202428"/>
+  <rect class="grid" x="29" y="45" width="26" height="10" rx="3" fill="#202428"/>
+  <circle class="accent" cx="36" cy="33" r="7" fill="#e7794d"/>
+</svg>
