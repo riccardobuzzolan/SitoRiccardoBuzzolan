@@ -217,7 +217,7 @@
   });
 
   // External iframes remain unloaded until a visitor explicitly requests a preview.
-  $('[data-embed-activate]').forEach(button => button.addEventListener('click', () => {
+  document.querySelectorAll('[data-embed-activate]')?.forEach(button => button.addEventListener('click', () => {
     const frame = document.getElementById(button.dataset.embedActivate);
     if (!frame?.dataset.src) return;
     frame.src = frame.dataset.src;
