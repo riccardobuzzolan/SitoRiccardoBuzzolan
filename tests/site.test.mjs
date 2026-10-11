@@ -4,7 +4,7 @@ import { readFileSync, mkdtempSync, writeFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import vm from 'node:vm';
-import { CANONICAL, inspectHtml, inspectSource, localReference } from '../scripts/check-site.mjs';
+import { CANONICAL, attributes, inspectHtml, inspectSource, localReference } from '../scripts/check-site.mjs';
 
 const source = readFileSync(new URL('../assets/js/site.js', import.meta.url), 'utf8');
 
@@ -109,4 +109,34 @@ test('Notion uses its genuine iframe embed and the other previews keep working',
   assert.doesNotMatch(html, /id="(?:substackFrame|externalPreview[234])"/);
   assert.match(source, /articlePreviews\.forEach/);
   assert.match(source, /panel\.hidden=i!==index/);
+});
+
+test('subject table rows own four cells and each contact button remains inside its cell', () => {
+  const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+  const stack = [];
+  const rows = [];
+  const voidTags = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr']);
+  for (const match of html.matchAll(/<\/?([a-z][\w-]*)\b[^>]*>/gi)) {
+    const tag = match[1].toLowerCase();
+    if (match[0].startsWith('</')) {
+      const index = stack.findLastIndex(node => node.tag === tag);
+      if (index >= 0) stack.length = index;
+      continue;
+    }
+    const node = { tag, attrs: attributes(match[0]), children: [] };
+    stack.at(-1)?.children.push(node);
+    if (node.attrs.role === 'row' && node.attrs.class?.split(/\s+/).includes('subject-table-row')) rows.push(node);
+    if (!voidTags.has(tag) && !match[0].endsWith('/>')) stack.push(node);
+  }
+  assert.equal(rows.length, 5);
+  assert.deepEqual(rows[0].children.map(cell => cell.attrs.role), ['columnheader', 'columnheader', 'columnheader', 'columnheader']);
+  const subjects = ['Economia aziendale', 'Diritto', 'Storia', 'Geografia'];
+  rows.slice(1).forEach((row, index) => {
+    assert.deepEqual(row.children.map(cell => cell.attrs.role), ['cell', 'cell', 'cell', 'cell']);
+    assert.equal(row.children[3].children.length, 1);
+    const button = row.children[3].children[0];
+    assert.equal(button.tag, 'button');
+    assert.equal(button.attrs.type, 'button');
+    assert.equal(button.attrs['data-tutor-subject'], subjects[index]);
+  });
 });

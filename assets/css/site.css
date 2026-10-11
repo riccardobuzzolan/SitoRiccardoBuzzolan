@@ -937,8 +937,9 @@
     .subject-table-head{min-height:46px;background:var(--bone);font-size:.69rem;font-weight:850;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
     .subject-table-row strong{display:flex;align-items:center;gap:9px;font-size:.86rem}
     .subject-table-row>span{font-size:.78rem;line-height:1.46;color:#5e5f5a}
-    .subject-table-row>button{margin-right:12px;border:1px solid rgba(17,17,17,.14);border-radius:999px;background:#111;color:#fff;padding:10px 13px;font-size:.69rem;font-weight:800;cursor:pointer;white-space:nowrap}
-    .subject-table-row>button:hover{background:#ed7621}
+    .subject-table-row>.subject-contact{display:flex;padding:0}
+    .subject-table-row button{margin-right:12px;border:1px solid rgba(17,17,17,.14);border-radius:999px;background:#111;color:#fff;padding:10px 13px;font-size:.69rem;font-weight:800;cursor:pointer;white-space:nowrap}
+    .subject-table-row button:hover{background:#ed7621}
     .subject-dot{flex:0 0 auto;width:10px;height:10px;border-radius:50%;background:#ed7621}.subject-dot.law{background:#315cff}.subject-dot.history{background:#d68924}.subject-dot.geo{background:#39846b}
 
     .pricing-wrap{margin-top:28px!important;padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important}
@@ -1027,7 +1028,7 @@
       .subject-table{overflow:visible;border:0;background:transparent;box-shadow:none}
       .subject-table-head{display:none!important}
       .subject-table-row{grid-template-columns:1fr!important;gap:0;margin-bottom:10px;border:1px solid var(--line);border-radius:18px;background:#fff;overflow:hidden}
-      .subject-table-row>*{padding:10px 14px}.subject-table-row>button{margin:0 12px 12px;width:calc(100% - 24px)}
+      .subject-table-row>*{padding:10px 14px}.subject-table-row button{margin:0 12px 12px;width:calc(100% - 24px)}
       .archive-real .data-grid-row{grid-template-columns:1.2fr .7fr .65fr!important}.archive-real .data-grid-row>*:nth-child(4){display:block!important}
       .articles-head,.notion-embed-head{align-items:flex-start;flex-direction:column}
       .article-frame-shell iframe{height:540px}.notion-frame iframe{height:600px}.figma-frame iframe{min-height:440px}
