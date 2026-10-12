@@ -97,10 +97,10 @@
     stop(s);s.start=performance.now();
     function frame(now){
       s.raf=0;if(!s.el.isConnected||document.hidden||!s.visible)return;
-      const elapsed=reduce.matches?5:Math.min(6,(now-s.start)/1000);
+      const elapsed=reduce.matches?5:((s.kind==='orbit'||s.kind==='object')?(now-s.start)/1000:Math.min(6,(now-s.start)/1000));
       render(s,elapsed);
       if(!reduce.matches&&(s.kind==='orbit'||s.kind==='object'||elapsed<3.3))s.raf=requestAnimationFrame(frame);
-      if(!reduce.matches&&(s.kind==='orbit'||s.kind==='object')&&elapsed===6)s.start=now-1500;
+      
     }
     if(s.visible)s.raf=requestAnimationFrame(frame);
   }
