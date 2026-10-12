@@ -100,7 +100,7 @@
       const elapsed=reduce.matches?5:((s.kind==='orbit'||s.kind==='object')?(now-s.start)/1000:Math.min(6,(now-s.start)/1000));
       render(s,elapsed);
       if(!reduce.matches&&(s.kind==='orbit'||s.kind==='object'||elapsed<3.3))s.raf=requestAnimationFrame(frame);
-      
+
     }
     if(s.visible)s.raf=requestAnimationFrame(frame);
   }
