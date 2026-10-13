@@ -56,3 +56,9 @@ GitHub Pages pubblica i file statici dalla radice del branch configurato nelle i
 Non aggiungere una rewrite globale verso la homepage: gli URL inesistenti devono restituire HTTP 404 anche su Vercel. Il meta refresh di `404.html` resta un fallback browser verso il sito primario e non sostituisce lo status HTTP.
 
 Conservare SHA e deployment verificato. Per Vercel usare il rollback alla produzione precedente dal dashboard, poi preparare un revert in branch. Per GitHub Pages preparare il revert del commit problematico, far passare `Quality / quality` e aggiornare il branch di pubblicazione. Verificare entrambe le copie dopo il rollback; non effettuare reset forzati di `main`.
+
+## Consenso privacy e contenuti incorporati
+
+Il sito mostra un banner con **Accetta**, **Rifiuta** e **Personalizza**. L'anteprima Memory Atlas e l'iframe Notion hanno solo `data-privacy-src` nel codice HTML iniziale; le connessioni esterne partono automaticamente **solo dopo il consenso**. Il rifiuto non impedisce di consultare le pagine; preferenze e revoca sono disponibili nel footer. Il consenso viene ricordato per 185 giorni, periodo non inferiore a sei mesi. L'informativa si trova in `privacy.html`. Google Ads e Google Analytics non vengono introdotti da questa modifica.
+
+Verifica entrambe le copie pubbliche, il caricamento dei frame dopo il consenso e la revoca usando DevTools → Network. Se un fornitore cambia il proprio trattamento dei dati, ricontrolla le informative e il banner.
