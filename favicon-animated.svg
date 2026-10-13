@@ -1,17 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Libro con pagina animata e orbita cromatica">
-<title>Portfolio Ripetizioni</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Libro con pagina che si sfoglia e pennellata fucsia animata">
+<title>Portfolio Ripetizioni · Gesto</title>
+<defs><linearGradient id="paintbrush" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#FC2D82"/><stop offset=".55" stop-color="#F7359B"/><stop offset="1" stop-color="#38D6EE"/></linearGradient></defs>
 <style>
-#motion{transform-origin:32px 49px;animation:page 3.6s cubic-bezier(.3,0,.2,1) infinite}
-#orbit{transform-origin:32px 32px;animation:orbit 3.6s linear infinite}
-@keyframes page{0%,12%,84%,100%{transform:rotate(0)}38%,55%{transform:rotate(-31deg)}}
-@keyframes orbit{to{transform:rotate(360deg)}}
-@media(prefers-reduced-motion:reduce){#motion,#orbit{animation:none}}
+#motion{transform-origin:32px 49px;animation:flip 3.5s cubic-bezier(.38,0,.18,1) infinite}
+#swipe{stroke-dasharray:100;animation:brush 3.5s cubic-bezier(.3,0,.2,1) infinite}
+@keyframes flip{0%,13%,80%,100%{transform:rotate(0)}38%,60%{transform:rotate(-33deg)}}
+@keyframes brush{0%,6%{stroke-dashoffset:100;opacity:.25}46%,79%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:-100;opacity:.3}}
+@media(prefers-reduced-motion:reduce){#motion,#swipe{animation:none}#swipe{stroke-dashoffset:0;opacity:1}}
 </style>
-<g id="orbit" fill="none" stroke-width="3.5" stroke-linecap="round"><path d="M7 23C10 10 22 7 30 8" stroke="#FE388B"/><path d="M57 39C54 52 42 57 34 56" stroke="#2775FF"/></g>
-<path d="M32 21C24 16 15 15 7 19v30c10-3 18-2 25 3 7-5 15-6 25-3V19c-8-4-17-3-25 2Z" fill="#123C58" stroke="#123C58" stroke-width="2.2" stroke-linejoin="round"/>
-<path d="M31 23c-6-3-13-4-19-2v23c8-1 14 1 19 5Z" fill="#F5FAFF"/>
-<path d="M33 23c6-3 13-4 19-2v23c-8-1-14 1-19 5Z" fill="#BBDCF4"/>
-<path d="M16 28h9M16 34h9M39 28h9M39 34h9" stroke="#81B2D3" stroke-width="2.1" stroke-linecap="round"/>
-<g id="motion"><path d="M32 22C40 15 47 16 53 20v24c-8-2-15 0-21 6Z" fill="#4CE0D0"/><path d="M38 29c3-1 6-1 9 0M38 35c3-1 6-1 9 0" stroke="#0C6A76" stroke-width="2.3" stroke-linecap="round" fill="none"/></g>
-<path d="M32 21v30" stroke="#083449" stroke-width="2.7"/>
+<path id="swipe" d="M9 20C20 6 42 8 55 18" fill="none" stroke="url(#paintbrush)" stroke-width="6.5" stroke-linecap="round" pathLength="100"/>
+<path d="M32 23C24 18 17 17 7 20v29c9-3 18-2 25 4 7-6 16-7 25-4V20C47 17 40 18 32 23Z" fill="#113B54" stroke="#0B3549" stroke-width="2.4" stroke-linejoin="round"/>
+<path d="M31 25C24 21 17 21 12 23v21c7-1 14 1 19 5Z" fill="#F5F9FC"/>
+<path d="M33 25c7-4 14-4 19-2v21c-7-1-14 1-19 5Z" fill="#C8E8EE"/>
+<path d="M17 30h8m-8 6h8M39 30h8M39 36h8" fill="none" stroke="#8BBECF" stroke-width="2.2" stroke-linecap="round"/>
+<g id="motion"><path d="M32 24C40 17 47 18 54 21v24c-8-2-16 0-22 5Z" fill="#41D2CC"/><path d="M38 30c3-1.3 7-1.3 10-.3M38 36c3-1.3 7-1.3 10-.3" fill="none" stroke="#0E7687" stroke-width="2.2" stroke-linecap="round"/></g>
+<path d="M32 23v30" stroke="#0B3347" stroke-width="2.7"/>
 </svg>
