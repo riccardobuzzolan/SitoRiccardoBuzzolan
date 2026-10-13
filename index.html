@@ -52,6 +52,7 @@
 <link rel="apple-touch-icon" href="./apple-touch-icon.png"/>
 <link rel="manifest" href="./site.webmanifest"/>
 <link rel="stylesheet" href="./assets/css/site.css"/>
+<link rel="stylesheet" href="./assets/css/privacy.css"/>
 
 
 <meta content="https://riccardobuzzolan.github.io/SitoRiccardoBuzzolan/social-preview.png" property="og:image"/>
@@ -480,7 +481,7 @@
 <div><div class="section-label">WEB APP · GEOGRAFIA</div><h2 id="memory-atlas-title">Memory Atlas.</h2><p>Studia le capitali di USA, Europa e Sud America direttamente dalla mappa. Un progetto interattivo con ripasso adattivo.</p></div>
 <a href="https://usa-memory-atlas.vercel.app/" rel="noopener noreferrer" target="_blank">Apri a schermo intero ↗</a>
 </div>
-<div class="atlas-embed-frame"><iframe id="externalPreview1" title="Memory Atlas: mappa interattiva e quiz delle capitali" src="https://usa-memory-atlas.vercel.app/" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="fullscreen"></iframe></div>
+<div class="atlas-embed-frame"><iframe id="externalPreview1" title="Memory Atlas: mappa interattiva e quiz delle capitali" data-privacy-src="https://usa-memory-atlas.vercel.app/" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="fullscreen"></iframe></div>
 </div>
 </section>
 <section class="control seo-control" id="contatti">
@@ -522,7 +523,7 @@
 <a href="https://riccardobuzzolan.notion.site/Riccardo-Buzzolan-368f6793082c8139bd90dc2d61e1a6af?pvs=74" rel="noopener noreferrer" target="_blank">Apri su Notion ↗</a>
 </div>
 <div class="notion-frame reveal">
-<iframe id="externalPreview5" title="Portfolio Notion completo di Riccardo Buzzolan" src="https://riccardobuzzolan.notion.site/ebd/368f6793082c8139bd90dc2d61e1a6af" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe id="externalPreview5" title="Portfolio Notion completo di Riccardo Buzzolan" data-privacy-src="https://riccardobuzzolan.notion.site/ebd/368f6793082c8139bd90dc2d61e1a6af" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <a href="https://riccardobuzzolan.notion.site/Riccardo-Buzzolan-368f6793082c8139bd90dc2d61e1a6af?pvs=74" rel="noopener noreferrer" target="_blank">Apri la pagina originale su Notion ↗</a>
 </div>
 </div>
@@ -550,6 +551,7 @@
 <a class="magnetic-text" data-magnetic="" href="mailto:riccardobuzzolan96@gmail.com"><span class="magnetic-inner">Email</span></a>
 <a class="magnetic-text" data-magnetic="" href="https://riccardobuzzolan.substack.com/" rel="noreferrer" target="_blank"><span class="magnetic-inner">Substack</span></a>
 <a class="magnetic-text" data-magnetic="" href="#top"><span class="magnetic-inner">Torna su ↑</span></a>
+<a href="./privacy.html">Privacy e cookie</a><button type="button" data-privacy-open>Preferenze privacy</button>
 </div>
 </div>
 </footer>
@@ -558,6 +560,24 @@
 
 
 
+
+<section id="sitePrivacyBanner" class="site-privacy" aria-label="Gestione consenso privacy" hidden>
+  <div class="site-privacy-accent" aria-hidden="true">✳</div>
+  <div class="site-privacy-body">
+    <div class="site-privacy-head"><strong>La tua privacy, le tue scelte.</strong><button id="sitePrivacyClose" class="site-privacy-x" type="button" aria-label="Continua senza contenuti esterni">×</button></div>
+    <p>Le anteprime e i video esterni possono trasmettere dati tecnici ai fornitori. Accettando, li caricheremo automaticamente. Rifiutando, il sito resta consultabile.</p>
+    <div class="site-privacy-settings" id="sitePrivacyOptions" hidden><label><input id="sitePrivacyExternal" type="checkbox"> <span>Abilita anteprime e contenuti multimediali esterni</span></label><p>Google Ads non è configurato. Nessun consenso pubblicitario viene concesso.</p></div>
+    <div class="site-privacy-buttons">
+      <button id="sitePrivacyReject" class="site-privacy-reject" type="button">Rifiuta</button>
+      <button id="sitePrivacyCustomize" class="site-privacy-customize" type="button" aria-expanded="false" aria-controls="sitePrivacyOptions">Personalizza</button>
+      <button id="sitePrivacyAccept" class="site-privacy-accept" type="button">Accetta tutti</button>
+      <button id="sitePrivacySave" class="site-privacy-accept" type="button" hidden>Salva preferenze</button>
+    </div>
+    <a class="site-privacy-policy" href="./privacy.html">Informativa privacy e cookie</a>
+  </div>
+</section>
+
 <script src="./assets/js/motion-light.js" defer></script>
-<script src="./assets/js/site.js" defer></script></body>
+<script src="./assets/js/site.js" defer></script>
+<script src="./assets/js/privacy.js" data-privacy-site="ripetizioni" defer></script></body>
 </html>
