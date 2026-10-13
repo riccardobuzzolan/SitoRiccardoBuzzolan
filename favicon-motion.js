@@ -30,7 +30,7 @@
 
   function applyFrame(svg, i) {
     const t = i / frameCount;
-    const primary = svg.querySelector('#motion');
+    const primary = svg.querySelector('#motion, #trail, #tick, #route, #page, #b');
     if (!primary) throw new Error('Animated SVG subject is missing');
     const p = reveal(t, .12, .55, .84);
     const transform = (id, value) => {
@@ -59,19 +59,12 @@
         break;
       }
       case 'page': {
-        const phase = t < .13 || t > .80 ? 0
-          : t < .38 ? (t - .13) / .25
-          : t < .60 ? 1 : 1 - (t - .60) / .20;
-        const angle = -33 * Math.max(0, phase);
-        primary.setAttribute('transform', `rotate(${angle.toFixed(2)} 32 49)`);
-        const swipe = svg.querySelector('#swipe');
-        if (swipe) {
-          const draw = t < .06 ? 0 : t < .46 ? (t - .06) / .40
-            : t < .79 ? 1 : 1 - (t - .79) / .21;
-          swipe.setAttribute('stroke-dasharray', '100');
-          swipe.setAttribute('stroke-dashoffset', String((t <= .79
-            ? 100 * (1 - draw) : -100 * (1 - draw)).toFixed(2)));
-          swipe.setAttribute('opacity', String((.25 + .75 * draw).toFixed(2)));
+        const turn=t<.12||t>=.8?0:t<.39?(t-.12)/.27:t<.61?1:1-(t-.61)/.19;
+        primary.setAttribute('transform','rotate('+(-28*Math.max(0,turn)).toFixed(2)+' 32 51)');
+        const stroke=svg.querySelector('#stroke');
+        if(stroke){
+          stroke.setAttribute('stroke-dasharray','100');
+          stroke.setAttribute('stroke-dashoffset',String((100*(1-p)).toFixed(2)));
         }
         break;
       }
