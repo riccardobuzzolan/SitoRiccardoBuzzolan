@@ -2,7 +2,7 @@
   "use strict";
   const site = document.querySelector("script[data-privacy-site]")?.dataset.privacySite || "website";
   const KEY = "richi-privacy-" + site + "-v1";
-  const AGE = 180 * 24 * 60 * 60 * 1000;
+  const AGE = 185 * 24 * 60 * 60 * 1000;
   const banner = document.getElementById("sitePrivacyBanner");
   const choices = document.getElementById("sitePrivacyOptions");
   const input = document.getElementById("sitePrivacyExternal");
