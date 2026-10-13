@@ -1,18 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Libro con pagina che si sfoglia e pennellata fucsia animata">
-<title>Portfolio Ripetizioni · Gesto</title>
-<defs><linearGradient id="paintbrush" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#FC2D82"/><stop offset=".55" stop-color="#F7359B"/><stop offset="1" stop-color="#38D6EE"/></linearGradient></defs>
-<style>
-#motion{transform-origin:32px 49px;animation:flip 3.5s cubic-bezier(.38,0,.18,1) infinite}
-#swipe{stroke-dasharray:100;animation:brush 3.5s cubic-bezier(.3,0,.2,1) infinite}
-@keyframes flip{0%,13%,80%,100%{transform:rotate(0)}38%,60%{transform:rotate(-33deg)}}
-@keyframes brush{0%,6%{stroke-dashoffset:100;opacity:.25}46%,79%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:-100;opacity:.3}}
-@media(prefers-reduced-motion:reduce){#motion,#swipe{animation:none}#swipe{stroke-dashoffset:0;opacity:1}}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Libro con una pagina che si sfoglia">
+<title>Portfolio Ripetizioni — Pagina</title><style>
+#page{transform-origin:32px 51px;animation:flip 3.6s cubic-bezier(.38,.04,.22,1) infinite}
+#stroke{stroke-dasharray:100;stroke-dashoffset:100;animation:underline 3.6s ease-in-out infinite}
+@keyframes flip{0%,12%,80%,100%{transform:rotate(0deg)}39%,61%{transform:rotate(-28deg)}}
+@keyframes underline{0%,12%{stroke-dashoffset:100;opacity:.25}52%,82%{stroke-dashoffset:0;opacity:1}100%{stroke-dashoffset:100;opacity:.25}}
+@media(prefers-reduced-motion:reduce){#page,#stroke{animation:none}#stroke{stroke-dashoffset:0;opacity:1}}
 </style>
-<path id="swipe" d="M9 20C20 6 42 8 55 18" fill="none" stroke="url(#paintbrush)" stroke-width="6.5" stroke-linecap="round" pathLength="100"/>
-<path d="M32 23C24 18 17 17 7 20v29c9-3 18-2 25 4 7-6 16-7 25-4V20C47 17 40 18 32 23Z" fill="#113B54" stroke="#0B3549" stroke-width="2.4" stroke-linejoin="round"/>
-<path d="M31 25C24 21 17 21 12 23v21c7-1 14 1 19 5Z" fill="#F5F9FC"/>
-<path d="M33 25c7-4 14-4 19-2v21c-7-1-14 1-19 5Z" fill="#C8E8EE"/>
-<path d="M17 30h8m-8 6h8M39 30h8M39 36h8" fill="none" stroke="#8BBECF" stroke-width="2.2" stroke-linecap="round"/>
-<g id="motion"><path d="M32 24C40 17 47 18 54 21v24c-8-2-16 0-22 5Z" fill="#41D2CC"/><path d="M38 30c3-1.3 7-1.3 10-.3M38 36c3-1.3 7-1.3 10-.3" fill="none" stroke="#0E7687" stroke-width="2.2" stroke-linecap="round"/></g>
-<path d="M32 23v30" stroke="#0B3347" stroke-width="2.7"/>
+<path d="M32 20C24 15 15 15 7 19v30c10-4 18-3 25 2 7-5 15-6 25-2V19c-8-4-17-4-25 1Z" fill="#24514D" stroke="#214B47" stroke-width="2" stroke-linejoin="round"/>
+<path d="M31 23C23 19 17 19 11 22v23c8-2 14-1 20 3Z" fill="#EFF6E6"/>
+<path d="M33 23C41 19 47 19 53 22v23c-8-2-14-1-20 3Z" fill="#B6DBCF"/>
+<path d="M16 29h9M16 36h9M40 29h8M40 36h8" stroke="#89AFA4" stroke-width="2" fill="none" stroke-linecap="round"/>
+<g id="page"><path d="M32 20c8-6 16-6 22-2v27c-8-2-16 0-22 6Z" fill="#73C3B0"/><path d="M39 26h9M39 33h9" stroke="#307B6B" stroke-width="2" fill="none" stroke-linecap="round"/></g>
+<path d="M32 20v31" stroke="#1A4541" stroke-width="2.7"/>
+<path id="stroke" d="M13 56q19 5 38 0" fill="none" stroke="#D6A05A" stroke-width="3.5" stroke-linecap="round" pathLength="100"/>
 </svg>
