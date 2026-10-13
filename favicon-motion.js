@@ -59,9 +59,20 @@
         break;
       }
       case 'page': {
-        const angle = -31 * Math.sin(Math.PI * p);
+        const phase = t < .13 || t > .80 ? 0
+          : t < .38 ? (t - .13) / .25
+          : t < .60 ? 1 : 1 - (t - .60) / .20;
+        const angle = -33 * Math.max(0, phase);
         primary.setAttribute('transform', `rotate(${angle.toFixed(2)} 32 49)`);
-        transform('#orbit', `rotate(${(360 * t).toFixed(2)} 32 32)`);
+        const swipe = svg.querySelector('#swipe');
+        if (swipe) {
+          const draw = t < .06 ? 0 : t < .46 ? (t - .06) / .40
+            : t < .79 ? 1 : 1 - (t - .79) / .21;
+          swipe.setAttribute('stroke-dasharray', '100');
+          swipe.setAttribute('stroke-dashoffset', String((t <= .79
+            ? 100 * (1 - draw) : -100 * (1 - draw)).toFixed(2)));
+          swipe.setAttribute('opacity', String((.25 + .75 * draw).toFixed(2)));
+        }
         break;
       }
       case 'reveal': {
