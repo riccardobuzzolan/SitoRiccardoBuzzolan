@@ -97,12 +97,12 @@ test('Notion uses its genuine iframe embed and the other previews keep working',
   const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
   const frames = [...html.matchAll(/<iframe\b[^>]*><\/iframe>/g)].map(match => match[0]);
   assert.equal(frames.length, 2);
-  assert.match(frames[0], /src="https:\/\/usa-memory-atlas\.vercel\.app\/"/);
+  assert.match(frames[0], /data-privacy-src="https:\/\/usa-memory-atlas\.vercel\.app\/"/);
   assert.equal([...html.matchAll(/data-local-article="\d"/g)].length, 6);
   assert.equal([...html.matchAll(/class="article-select(?: active)?"/g)].length, 6);
   assert.match(html, /data-local-article="1"\s*>/);
   assert.match(html, /assets\/images\/figma-home-light\.png/);
-  assert.match(frames[1], /src="https:\/\/riccardobuzzolan\.notion\.site\/ebd\/368f6793082c8139bd90dc2d61e1a6af"/);
+  assert.match(frames[1], /data-privacy-src="https:\/\/riccardobuzzolan\.notion\.site\/ebd\/368f6793082c8139bd90dc2d61e1a6af"/);
   assert.match(frames[1], /id="externalPreview5"/);
   assert.doesNotMatch(html, /class="notion-local(?:-grid|-details)?"/);
   assert.doesNotMatch(html, /<iframe[^>]*(?:substack\.com|figma\.com)/);
@@ -139,4 +139,15 @@ test('subject table rows own four cells and each contact button remains inside i
     assert.equal(button.attrs.type, 'button');
     assert.equal(button.attrs['data-tutor-subject'], subjects[index]);
   });
+});
+
+
+test('external iframe sources are inert until consent is granted', () => {
+  const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+  assert.equal([...html.matchAll(/<iframe\b[^>]*data-privacy-src=/g)].length, 2);
+  assert.doesNotMatch(html, /<iframe\b[^>]*\ssrc="https:\/\//);
+  const privacy = readFileSync(new URL('../assets/js/privacy.js', import.meta.url), 'utf8');
+  assert.match(privacy, /frame\.removeAttribute\("src"\)/);
+  assert.match(privacy, /localStorage\.setItem\(KEY/);
+  assert.match(privacy, /siteprivacy:changed/);
 });
