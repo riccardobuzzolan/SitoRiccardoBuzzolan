@@ -41,21 +41,24 @@ function runtime({ failedPortrait = false } = {}) {
   return { document, drawer, background, trigger, close, name, select, last, handlers, canvas, scheduled: () => scheduled };
 }
 
-test('drawer isolates the background, traps Tab, closes with Escape and restores focus', () => {
-  const app = runtime();
-  app.trigger.focus();app.trigger.click();
-  assert.equal(app.drawer.inert, false);
-  assert.equal(app.background.inert, true);
-  assert.equal(app.select.value, 'Storia');
-  assert.equal(app.document.activeElement, app.name);
-  app.last.focus();let prevented = false;
-  app.handlers.get('keydown')({ key: 'Tab', shiftKey: false, preventDefault: () => { prevented = true; } });
-  assert.ok(prevented);assert.equal(app.document.activeElement, app.close);
-  app.handlers.get('keydown')({ key: 'Tab', shiftKey: true, preventDefault: () => {} });
-  assert.equal(app.document.activeElement, app.last);
-  app.handlers.get('keydown')({ key: 'Escape', preventDefault: () => {} });
-  assert.equal(app.drawer.inert, true);assert.equal(app.background.inert, false);
-  assert.equal(app.document.activeElement, app.trigger);
+test('demo mode hides booking and shows informational email contacts', () => {
+  const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
+  assert.match(html, /Sito dimostrativo/);
+  assert.match(html, /Servizio non attivo/);
+  assert.match(html, /Richiedi informazioni/);
+  assert.equal([...html.matchAll(/class="pricing-price price-masked"/g)].length, 4);
+  assert.doesNotMatch(html, /<aside[^>]*id="tutorDrawer"/);
+  assert.doesNotMatch(html, /<button[^>]*data-tutor-subject=/);
+  assert.doesNotMatch(html, /Chiedi disponibilità|Richiesta lezione|https:\/\/wa\.me\//);
+  assert.doesNotMatch(html, /20 €|25 €|30 €|200 €|10 lezioni \+ 1 gratuita/);
+  assert.doesNotMatch(source, /tutorDrawer|wa\.me\//);
+  assert.match(html, /<title>Ripetizioni a Schio e online \| Riccardo Buzzolan<\/title>/);
+  assert.match(html, /rel="canonical"/);
+  const jsonLd = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+  assert.ok(jsonLd);
+  const schema = JSON.parse(jsonLd[1]);
+  assert.ok(schema['@graph'].some(node => node['@type'] === 'CreativeWork'));
+  assert.ok(!schema['@graph'].some(node => node['@type'] === 'Offer'));
 });
 
 test('failed portrait decode hides the decorative canvas without starting an animation loop', async () => {
@@ -111,7 +114,7 @@ test('Notion uses its genuine iframe embed and the other previews keep working',
   assert.match(source, /panel\.hidden=i!==index/);
 });
 
-test('subject table rows own four cells and each contact button remains inside its cell', () => {
+test('subject table rows keep four cells and show informational email links', () => {
   const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
   const stack = [];
   const rows = [];
@@ -134,10 +137,10 @@ test('subject table rows own four cells and each contact button remains inside i
   rows.slice(1).forEach((row, index) => {
     assert.deepEqual(row.children.map(cell => cell.attrs.role), ['cell', 'cell', 'cell', 'cell']);
     assert.equal(row.children[3].children.length, 1);
-    const button = row.children[3].children[0];
-    assert.equal(button.tag, 'button');
-    assert.equal(button.attrs.type, 'button');
-    assert.equal(button.attrs['data-tutor-subject'], subjects[index]);
+    const link = row.children[3].children[0];
+    assert.equal(link.tag, 'a');
+    assert.match(link.attrs.href, /^mailto:riccardobuzzolan96@gmail\.com\?subject=/);
+    assert.ok(decodeURIComponent(link.attrs.href).includes(subjects[index]));
   });
 });
 

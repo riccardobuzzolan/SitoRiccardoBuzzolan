@@ -1101,3 +1101,17 @@
   .figma-preview-info { padding: 20px; }
   .figma-image-viewport { height: min(520px,60svh); }
 }
+
+/* Sito dimostrativo: contatti informativi, tariffe e prenotazioni disabilitate. */
+.demo-notice{display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px;width:max-content;max-width:100%;margin-bottom:18px;padding:9px 13px;border:1px solid rgba(24,85,62,.16);border-radius:999px;background:#edf7f1;color:#234f3d;font-size:.75rem;line-height:1.4}
+.demo-notice strong{font-weight:850}.demo-notice span{color:#52705f}
+.demo-disclaimer{margin-top:14px!important;padding-left:13px;border-left:3px solid #559873;color:#37644c!important;font-size:.85rem!important}
+.offer-strip-demo span{white-space:normal}
+.demo-pricing-heading{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 16px;margin:0 0 16px;font-size:.8rem;color:#63665e}
+.demo-pricing-heading strong{color:#202920;font-weight:850}
+.pricing-card .pricing-price.price-masked{letter-spacing:.16em;color:#9c9e97;filter:blur(2px);user-select:none;-webkit-user-select:none}
+.pricing-card .pricing-action.pricing-disabled{display:block;cursor:default;pointer-events:none;opacity:.72;background:rgba(255,255,255,.62);color:#626760}
+.subject-table-row .subject-contact .subject-info-link{display:inline-block;margin-right:12px;border:1px solid rgba(17,17,17,.14);border-radius:999px;background:#111;color:#fff;padding:10px 13px;font-size:.69rem;font-weight:800;text-decoration:none;white-space:nowrap}
+.subject-table-row .subject-contact .subject-info-link:hover,.subject-table-row .subject-contact .subject-info-link:focus-visible{background:#ed7621}
+.demo-contact-float .demo-float-symbol{display:grid!important;place-items:center;width:19px;height:19px;border-radius:50%;background:#f0e5d7;color:#2b312b;font-size:13px;font-weight:850}
+@media(max-width:760px){.demo-notice{border-radius:15px;font-size:.69rem}.demo-pricing-heading{display:block}.demo-pricing-heading span{display:block;margin-top:4px}.subject-table-row .subject-contact .subject-info-link{white-space:normal}}
