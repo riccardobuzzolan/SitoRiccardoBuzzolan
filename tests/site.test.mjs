@@ -139,7 +139,7 @@ test('subject table rows keep four cells and show informational email links', ()
     assert.equal(row.children[3].children.length, 1);
     const link = row.children[3].children[0];
     assert.equal(link.tag, 'a');
-    assert.match(link.attrs.href, /^mailto:riccardobuzzolan96@gmail\\.com\\?subject=/);
+    assert.match(link.attrs.href, /^mailto:riccardobuzzolan96@gmail\.com\?subject=/);
     assert.ok(decodeURIComponent(link.attrs.href).includes(subjects[index]));
   });
 });
