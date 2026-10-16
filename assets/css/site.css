@@ -951,8 +951,7 @@
     .pricing-card.price-90{background:#f5efc8}
     .pricing-card.price-120{background:#f4dfd3;border-color:rgba(237,118,33,.5)}
     .pricing-card.price-pack{background:#dceee1}
-    .pricing-card.featured-long:before{content:"Risparmio 10 €";position:absolute;right:16px;top:16px;padding:6px 9px;border-radius:999px;background:#ed7621;color:#fff;font-size:.65rem;font-weight:850}
-    .pricing-card.featured:before{display:none!important}
+        .pricing-card.featured:before{display:none!important}
     .pricing-card .pricing-kicker{color:#716b64!important}
     .pricing-card p{color:#5d5b56!important}
     .pricing-card .pricing-action{display:block;text-align:center;text-decoration:none;color:#111;background:rgba(255,255,255,.62)}
@@ -1115,3 +1114,9 @@
 .subject-table-row .subject-contact .subject-info-link:hover,.subject-table-row .subject-contact .subject-info-link:focus-visible{background:#ed7621}
 .demo-contact-float .demo-float-symbol{display:grid!important;place-items:center;width:19px;height:19px;border-radius:50%;background:#f0e5d7;color:#2b312b;font-size:13px;font-weight:850}
 @media(max-width:760px){.demo-notice{border-radius:15px;font-size:.69rem}.demo-pricing-heading{display:block}.demo-pricing-heading span{display:block;margin-top:4px}.subject-table-row .subject-contact .subject-info-link{white-space:normal}}
+
+/* Area ripetizioni spostata in fondo al portfolio, ancora in fase di bozza. */
+.tutoring-draft{border-top:1px solid var(--line-soft);padding-top:clamp(34px,6vw,80px)}
+.draft-section-notice{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 28px;padding:10px 0;color:#626760;font-size:.76rem;letter-spacing:.015em}
+.draft-section-notice strong{color:#292e2b;font-size:.8rem;font-weight:800}
+.draft-section-notice span{padding:6px 11px;border:1px solid #d9ded8;border-radius:999px;background:#f8f9f7}
