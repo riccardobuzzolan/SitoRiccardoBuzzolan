@@ -174,47 +174,7 @@
 
 
 
-  // Tutoring drawer.
-  const tutorDrawer=$('#tutorDrawer'), tutorBackdrop=$('#tutorDrawerBackdrop'), tutorSelect=$('#tutorSubject'); let previousFocus=null;
-  const background=$$('body > header, body > main, body > footer, body > a');
-  const inertBefore=new Map();
-  const openTutor=subject=>{
-    if(!tutorDrawer||tutorDrawer.classList.contains('open'))return;
-    previousFocus=document.activeElement;
-    if(subject&&tutorSelect)tutorSelect.value=subject;
-    background.forEach(element=>{inertBefore.set(element,element.inert);element.inert=true});
-    tutorDrawer.inert=false;tutorDrawer.classList.add('open');tutorBackdrop?.classList.add('open');
-    tutorDrawer.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
-    $('#tutorName')?.focus();
-  };
-  const closeTutor=()=>{
-    if(!tutorDrawer)return;
-    tutorDrawer.classList.remove('open');tutorBackdrop?.classList.remove('open');
-    background.forEach(element=>element.inert=inertBefore.get(element)??false);inertBefore.clear();
-    document.body.style.overflow='';previousFocus?.focus?.();
-    tutorDrawer.inert=true;tutorDrawer.setAttribute('aria-hidden','true');
-  };
-  $$('[data-tutor-subject]').forEach(btn=>btn.addEventListener('click',()=>openTutor(btn.dataset.tutorSubject)));
-  $('#tutorDrawerClose')?.addEventListener('click',closeTutor); tutorBackdrop?.addEventListener('click',closeTutor);
-  addEventListener('keydown',e=>{
-    if(!tutorDrawer?.classList.contains('open'))return;
-    if(e.key==='Escape'){e.preventDefault();closeTutor();return}
-    if(e.key!=='Tab')return;
-    const focusable=$$('button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),a[href]',tutorDrawer).filter(element=>!element.hidden);
-    const first=focusable[0],last=focusable.at(-1);
-    if(e.shiftKey&&document.activeElement===first){e.preventDefault();last?.focus()}
-    else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first?.focus()}
-  });
-  $('#tutorWhatsApp')?.addEventListener('click',()=>{
-    const name=$('#tutorName')?.value.trim()||'',subject=tutorSelect?.value||'Materia da definire',mode=$('#tutorMode')?.value||'',message=$('#tutorMessage')?.value.trim()||'';
-    const body=[`Ciao Riccardo, vorrei informazioni per una lezione di ${subject}.`,`Modalità preferita: ${mode}.`,name?`Nome: ${name}.`:'',message?`Dettagli: ${message}`:''].filter(Boolean).join('\n');
-    window.open(`https://wa.me/393480396556?text=${encodeURIComponent(body)}`,'_blank','noopener');
-  });
-  $('#tutorSubmit')?.addEventListener('click',()=>{
-    const name=$('#tutorName')?.value.trim()||'',email=$('#tutorEmail')?.value.trim()||'',subject=tutorSelect?.value||'Materia da definire',mode=$('#tutorMode')?.value||'',message=$('#tutorMessage')?.value.trim()||'';
-    const body=['Ciao Riccardo,','',`vorrei informazioni per una lezione di ${subject}.`,`Modalità preferita: ${mode}.`,name?`Nome: ${name}`:'',email?`Email: ${email}`:'',message?`Dettagli: ${message}`:''].filter(Boolean).join('\n');
-    location.href=`mailto:riccardobuzzolan96@gmail.com?subject=${encodeURIComponent('Richiesta ripetizioni · '+subject)}&body=${encodeURIComponent(body)}`;
-  });
+  // Contatti informativi tramite mailto; nessuna prenotazione attiva.
 
   // Inline article reader: articles remain visible even when Substack refuses framing.
   const substackOpen=$('#substackOpen'), substackLabel=$('#substackFrameLabel');
