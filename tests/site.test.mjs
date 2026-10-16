@@ -55,8 +55,10 @@ test('tutoring draft follows portfolio, has no pricing cards and retains local s
   assert.doesNotMatch(html, /Chiedi disponibilità|Richiesta lezione|https:\/\/wa\.me\//);
   assert.doesNotMatch(html, /20 €|25 €|30 €|200 €|10 lezioni \+ 1 gratuita/);
   assert.doesNotMatch(source, /tutorDrawer|wa\.me\//);
-  assert.match(html, /<title>Ripetizioni a Schio e online \| Riccardo Buzzolan<\/title>/);
+  assert.match(html, /<title>Riccardo Buzzolan \| Portfolio e ripetizioni a Schio · Bozza<\/title>/);
   assert.match(html, /rel="canonical"/);
+  assert.match(html, /name="description"/);
+  assert.doesNotMatch(html, /(?:@type|class)="Offer"|€|https:\/\/wa\.me\//);
   assert.match(html, /index,follow/);
   const jsonLd = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
   assert.ok(jsonLd);
