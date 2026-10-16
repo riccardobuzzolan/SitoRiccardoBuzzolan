@@ -41,19 +41,23 @@ function runtime({ failedPortrait = false } = {}) {
   return { document, drawer, background, trigger, close, name, select, last, handlers, canvas, scheduled: () => scheduled };
 }
 
-test('demo mode hides booking and shows informational email contacts', () => {
+test('tutoring draft follows portfolio, has no pricing cards and retains local search visibility', () => {
   const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
-  assert.match(html, /Sito dimostrativo/);
-  assert.match(html, /Servizio non attivo/);
+  const beforeFooter = html.slice(0, html.indexOf('</main>'));
+  assert.ok(beforeFooter.indexOf('id="portfolio-completo"') < beforeFooter.indexOf('id="ripetizioni"'));
+  assert.ok(beforeFooter.indexOf('id="ripetizioni"') < beforeFooter.indexOf('id="metodo"'));
+  assert.ok(beforeFooter.indexOf('id="metodo"') < beforeFooter.indexOf('id="contatti"'));
+  assert.match(html, /Sezione in lavorazione · Bozza/);
   assert.match(html, /Richiedi informazioni/);
-  assert.equal([...html.matchAll(/class="pricing-price price-masked"/g)].length, 4);
-  assert.doesNotMatch(html, /<aside[^>]*id="tutorDrawer"/);
-  assert.doesNotMatch(html, /<button[^>]*data-tutor-subject=/);
+  assert.doesNotMatch(html, /Formati illustrativi|Tariffe oscurate|Non prenotabile|Prezzi e promozioni oscurati/);
+  assert.doesNotMatch(html, /class="pricing-card|id="tariffe"|href="#tariffe"/);
+  assert.doesNotMatch(html, /<aside[^>]*id="tutorDrawer"|<button[^>]*data-tutor-subject=/);
   assert.doesNotMatch(html, /Chiedi disponibilità|Richiesta lezione|https:\/\/wa\.me\//);
   assert.doesNotMatch(html, /20 €|25 €|30 €|200 €|10 lezioni \+ 1 gratuita/);
   assert.doesNotMatch(source, /tutorDrawer|wa\.me\//);
   assert.match(html, /<title>Ripetizioni a Schio e online \| Riccardo Buzzolan<\/title>/);
   assert.match(html, /rel="canonical"/);
+  assert.match(html, /index,follow/);
   const jsonLd = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
   assert.ok(jsonLd);
   const schema = JSON.parse(jsonLd[1]);
