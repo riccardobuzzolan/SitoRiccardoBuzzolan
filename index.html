@@ -264,24 +264,7 @@
 </div>
 </div>
 </section>
-<script id="fiscal-preview-init">
-(() => {
- const slot=document.getElementById('fiscal-preview-slot');if(!slot)return;
- const update=event=>{
-  const allowed=event?.detail?.external===true || document.documentElement.dataset.externalConsent==='granted';
-  if(allowed && !slot.querySelector('iframe')){
-   const frame=document.createElement('iframe');
-   frame.title='Anteprima interattiva del progetto Scadenze Fiscali';
-   frame.src='https://scadenze-fiscali.vercel.app/';
-   frame.loading='eager';
-   frame.referrerPolicy='strict-origin-when-cross-origin';
-   slot.append(frame);
-  } else if(!allowed){slot.replaceChildren();}
- };
- document.addEventListener('siteprivacy:changed',update);
- if(document.readyState==='complete')update();
-})();
-</script>
+<script id="fiscal-preview-init" src="./assets/js/fiscal-preview.js" defer></script>
 <section class="articles-section" id="articoli">
 <div class="shell">
 <div class="articles-head reveal">
