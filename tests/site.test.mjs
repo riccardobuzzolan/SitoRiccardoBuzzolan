@@ -105,15 +105,16 @@ test('source security reports the category and file without exposing a matched t
 test('Notion uses its genuine iframe embed and the other previews keep working', () => {
   const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
   const frames = [...html.matchAll(/<iframe\b[^>]*><\/iframe>/g)].map(match => match[0]);
-  assert.equal(frames.length, 3);
-  assert.match(frames[0], /data-privacy-src="https:\/\/scadenze-fiscali\.vercel\.app\/"/);
-  assert.match(frames[1], /data-privacy-src="https:\/\/usa-memory-atlas\.vercel\.app\/"/);
+  assert.equal(frames.length, 2);
+  assert.match(html, /id="fiscal-preview-slot"/);
+  assert.match(html, /id="fiscal-preview-init"/);
+  assert.match(frames[0], /data-privacy-src="https:\/\/usa-memory-atlas\.vercel\.app\/"/);
   assert.equal([...html.matchAll(/data-local-article="\d"/g)].length, 6);
   assert.equal([...html.matchAll(/class="article-select(?: active)?"/g)].length, 6);
   assert.match(html, /data-local-article="1"\s*>/);
   assert.match(html, /assets\/images\/figma-home-light\.png/);
-  assert.match(frames[2], /data-privacy-src="https:\/\/riccardobuzzolan\.notion\.site\/ebd\/368f6793082c8139bd90dc2d61e1a6af"/);
-  assert.match(frames[2], /id="externalPreview5"/);
+  assert.match(frames[1], /data-privacy-src="https:\/\/riccardobuzzolan\.notion\.site\/ebd\/368f6793082c8139bd90dc2d61e1a6af"/);
+  assert.match(frames[1], /id="externalPreview5"/);
   assert.doesNotMatch(html, /class="notion-local(?:-grid|-details)?"/);
   assert.doesNotMatch(html, /<iframe[^>]*(?:substack\.com|figma\.com)/);
   assert.doesNotMatch(html, /id="(?:substackFrame|externalPreview[234])"/);
