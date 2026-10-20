@@ -106,6 +106,8 @@ test('Notion uses its genuine iframe embed and the other previews keep working',
   const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
   const frames = [...html.matchAll(/<iframe\b[^>]*><\/iframe>/g)].map(match => match[0]);
   assert.equal(frames.length, 2);
+  assert.match(html, /id="fiscal-preview-slot"/);
+  assert.match(html, /id="fiscal-preview-init"/);
   assert.match(frames[0], /data-privacy-src="https:\/\/usa-memory-atlas\.vercel\.app\/"/);
   assert.equal([...html.matchAll(/data-local-article="\d"/g)].length, 6);
   assert.equal([...html.matchAll(/class="article-select(?: active)?"/g)].length, 6);
