@@ -105,7 +105,7 @@
 </div>
 </div>
 </section>
-<section id="progetto-scadenze-fiscali" class="fiscal-feature" aria-labelledby="fiscal-feature-title"><div class="fiscal-feature-grid"><div class="fiscal-feature-copy"><small>Progetto web gestito da me</small><h2 id="fiscal-feature-title">Scadenze Fiscali</h2><p>Un sito dedicato alla consultazione delle scadenze fiscali italiane, con calendario e contenuti di approfondimento. Puoi esplorarlo direttamente nell'anteprima.</p><a href="https://scadenze-fiscali.vercel.app/" target="_blank" rel="noopener noreferrer">Apri sito ↗</a></div><div class="fiscal-feature-preview"><div class="fiscal-feature-chrome"><span class="fiscal-feature-dot"></span><span class="fiscal-feature-dot"></span><span class="fiscal-feature-dot"></span><span class="fiscal-feature-domain">scadenze-fiscali.vercel.app</span></div><iframe title="Anteprima interattiva del progetto Scadenze Fiscali" data-privacy-src="https://scadenze-fiscali.vercel.app/" loading="eager" referrerpolicy="strict-origin-when-cross-origin" allow="fullscreen"></iframe></div></div></section>
+<section id="progetto-scadenze-fiscali" class="fiscal-feature" aria-labelledby="fiscal-feature-title"><div class="fiscal-feature-grid"><div class="fiscal-feature-copy"><small>Progetto web gestito da me</small><h2 id="fiscal-feature-title">Scadenze Fiscali</h2><p>Un sito dedicato alla consultazione delle scadenze fiscali italiane, con calendario e contenuti di approfondimento. Puoi esplorarlo direttamente nell'anteprima.</p><a href="https://scadenze-fiscali.vercel.app/" target="_blank" rel="noopener noreferrer">Apri sito ↗</a></div><div class="fiscal-feature-preview"><div class="fiscal-feature-chrome"><span class="fiscal-feature-dot"></span><span class="fiscal-feature-dot"></span><span class="fiscal-feature-dot"></span><span class="fiscal-feature-domain">scadenze-fiscali.vercel.app</span></div><div id="fiscal-preview-slot" aria-label="Anteprima di Scadenze Fiscali"></div></div></div></section>
 
 <section class="education" id="formazione">
 <div class="shell">
@@ -264,6 +264,24 @@
 </div>
 </div>
 </section>
+<script id="fiscal-preview-init">
+(() => {
+ const slot=document.getElementById('fiscal-preview-slot');if(!slot)return;
+ const update=event=>{
+  const allowed=event?.detail?.external===true || document.documentElement.dataset.externalConsent==='granted';
+  if(allowed && !slot.querySelector('iframe')){
+   const frame=document.createElement('iframe');
+   frame.title='Anteprima interattiva del progetto Scadenze Fiscali';
+   frame.src='https://scadenze-fiscali.vercel.app/';
+   frame.loading='eager';
+   frame.referrerPolicy='strict-origin-when-cross-origin';
+   slot.append(frame);
+  } else if(!allowed){slot.replaceChildren();}
+ };
+ document.addEventListener('siteprivacy:changed',update);
+ if(document.readyState==='complete')update();
+})();
+</script>
 <section class="articles-section" id="articoli">
 <div class="shell">
 <div class="articles-head reveal">
