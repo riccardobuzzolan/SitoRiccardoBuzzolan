@@ -61,6 +61,7 @@
 .fiscal-feature iframe{display:block;width:100%;height:720px;border:0;background:#fff}
 @media(max-width:760px){.fiscal-feature{margin:24px 14px 44px;padding:22px}.fiscal-feature-grid{grid-template-columns:1fr}.fiscal-feature iframe{height:450px}}
 </style>
+<link rel="stylesheet" href="./assets/css/ascii-ocean-hero.css?v=20261022" />
 </head>
 <body>
 <a class="skip" href="#main">Vai al contenuto</a>
@@ -78,6 +79,7 @@
 </header>
 <main id="main" tabindex="-1">
 <section class="hero stack-hero" id="top">
+<canvas id="ocean" class="shark-canvas" aria-hidden="true"></canvas>
 <div class="stack-hero-grid">
 <div class="stack-hero-copy reveal visible">
 <h1>Riccardo Buzzolan <span class="stack-marker"><em>Portfolio e progetti</em></span></h1>
@@ -86,21 +88,12 @@
 <p>Formazione in Economia e Management. Progetti di analisi funzionale, applicazioni web e strumenti per lo studio.</p>
 </div>
 </div>
-<div class="stack-face-wrap" id="stackFaceWrap">
-<canvas aria-label="Ritratto interattivo ricostruito con particelle" id="stackFaceCanvas"></canvas>
-</div>
-<div aria-label="Aree del profilo" class="stack-stats">
-<div class="stack-stat hot"><strong>ERP</strong><span>Software gestionali</span></div>
-<div class="stack-stat"><strong>UAT</strong><span>Test funzionali</span></div>
-<div class="stack-stat"><strong>UX</strong><span>Prototipi digitali</span></div>
-<div class="stack-stat hot"><strong>WEB</strong><span>Progetti web</span></div>
-</div>
+
 <div class="stack-hero-form">
 <div aria-label="Collegamenti principali" class="stack-contact-actions">
 <a class="wa-main" href="#competenze">Esplora i progetti</a>
 <a class="mail-alt" href="mailto:riccardobuzzolan96@gmail.com?subject=Informazioni%20portfolio">Email</a>
 <span class="stack-price-note">Portfolio personale · Schio (Vicenza)</span>
-</div>
 </div>
 </div>
 </div>
@@ -144,6 +137,9 @@
 <div class="section-label" style="color:rgba(255,255,255,.54)">ESPERIENZA E PROGETTI</div>
 <h2 class="work-title">Esperienza, progetti e <em>strumenti.</em></h2>
 <p>Questa parte raccoglie il mio percorso professionale e alcuni progetti personali: amministrazione, software gestionali, test, prototipi, ricerca e sviluppo web.</p>
+</div>
+<div class="stack-face-wrap work-face-wrap" id="stackFaceWrap">
+<canvas aria-label="Ritratto interattivo ricostruito con particelle" id="stackFaceCanvas"></canvas>
 </div>
 <div class="feature-grid">
 <article class="feature blue f7 reveal">
@@ -532,6 +528,7 @@
 </section>
 
 <script src="./assets/js/motion-light.js" defer></script>
+<script src="https://riccardobuzzolan.github.io/assets/js/ascii-sharks-hero.js?v=20261022-blood" defer></script>
 <script src="./assets/js/site.js" defer></script>
 <script src="./assets/js/privacy.js" data-privacy-site="ripetizioni" defer></script></body>
 </html>
