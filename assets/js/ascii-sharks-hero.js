@@ -73,7 +73,7 @@
     }
     return 0;
   }
-  
+
 
   const angleDelta=(from,to)=>Math.atan2(Math.sin(to-from),Math.cos(to-from));
   function makeShark(kind,id,ux,uy,angle,size,speed,depth,anchorX,anchorY,phase) {
