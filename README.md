@@ -4,11 +4,9 @@ Pagina dedicata alle ripetizioni a Schio, Vicenza e online. Raccoglie informazio
 
 **Apri il progetto:** https://riccardobuzzolan.github.io/SitoRiccardoBuzzolan/
 
-## Anteprima grafica
+## Screenshot del sito
 
-![Immagine di anteprima del progetto](./social-preview.png)
-
-*Questa è l'immagine di condivisione del sito, non uno screenshot della pagina.*
+![Schermata desktop reale del sito pubblicato](docs/images/screenshot-desktop.png)
 
 ## Come funziona
 
